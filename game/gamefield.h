@@ -6,7 +6,7 @@
 class GameField : public QOpenGLWidget, protected QOpenGLFunctions
 {
 public:
-    GameField();
+    GameField(QWidget* parent = 0);
 };
 
 #endif // GAMEFIELD_H

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>652</width>
-    <height>357</height>
+    <width>620</width>
+    <height>450</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,7 +16,7 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>230</x>
+     <x>210</x>
      <y>130</y>
      <width>201</width>
      <height>51</height>
@@ -26,17 +26,17 @@
     <string>Records Table Coming Soon</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="backButton">
+  <widget class="QPushButton" name="exitRecordsTableButton">
    <property name="geometry">
     <rect>
-     <x>280</x>
-     <y>290</y>
+     <x>260</x>
+     <y>350</y>
      <width>89</width>
      <height>25</height>
     </rect>
    </property>
    <property name="text">
-    <string>Back</string>
+    <string>Exit</string>
    </property>
   </widget>
  </widget>

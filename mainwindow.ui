@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>690</width>
-    <height>444</height>
+    <width>620</width>
+    <height>450</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,18 +19,17 @@
      <rect>
       <x>19</x>
       <y>29</y>
-      <width>651</width>
+      <width>581</width>
       <height>391</height>
      </rect>
     </property>
    </widget>
-<<<<<<< HEAD
    <widget class="RecordsTable" name="recordsTable" native="true">
     <property name="geometry">
      <rect>
       <x>20</x>
       <y>30</y>
-      <width>651</width>
+      <width>581</width>
       <height>391</height>
      </rect>
     </property>
@@ -40,7 +39,7 @@
      <rect>
       <x>19</x>
       <y>30</y>
-      <width>651</width>
+      <width>581</width>
       <height>391</height>
      </rect>
     </property>
@@ -48,39 +47,48 @@
      <enum>Qt::DefaultContextMenu</enum>
     </property>
    </widget>
+   <widget class="Game" name="gameView" native="true">
+    <property name="geometry">
+     <rect>
+      <x>19</x>
+      <y>29</y>
+      <width>581</width>
+      <height>371</height>
+     </rect>
+    </property>
+   </widget>
    <zorder>recordsTable</zorder>
    <zorder>mainMenu</zorder>
+   <zorder>gameView</zorder>
    <zorder>choosingLevel</zorder>
-=======
->>>>>>> bfe41cb9ccdfbe3f5c8bb996b90f3d480253f172
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
   <customwidget>
-<<<<<<< HEAD
    <class>ChoosingLevel</class>
    <extends>QWidget</extends>
    <header>choosinglevel.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
-=======
->>>>>>> bfe41cb9ccdfbe3f5c8bb996b90f3d480253f172
    <class>MainMenu</class>
    <extends>QWidget</extends>
    <header>mainmenu.h</header>
    <container>1</container>
   </customwidget>
-<<<<<<< HEAD
   <customwidget>
    <class>RecordsTable</class>
    <extends>QWidget</extends>
    <header>recordstable.h</header>
    <container>1</container>
   </customwidget>
-=======
->>>>>>> bfe41cb9ccdfbe3f5c8bb996b90f3d480253f172
+  <customwidget>
+   <class>Game</class>
+   <extends>QWidget</extends>
+   <header>game.h</header>
+   <container>1</container>
+  </customwidget>
  </customwidgets>
  <resources/>
  <connections/>

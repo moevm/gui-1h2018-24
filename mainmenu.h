@@ -17,9 +17,6 @@ public:
 
 private:
     Ui::MainMenu *ui;
-
-private slots:
-    void on_exit_clicked(bool);
 };
 
 #endif // MAINMENU_H
