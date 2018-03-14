@@ -28,9 +28,6 @@ private slots:
     void on_newButton_clicked(bool);
     void on_exitGameButton_clicked(bool);
     void on_exitRecordsTableButton_clicked(bool);
-
-
-
 };
 
 #endif // MAINWINDOW_H

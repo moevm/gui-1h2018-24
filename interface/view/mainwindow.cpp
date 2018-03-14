@@ -36,12 +36,14 @@ void MainWindow::on_recordsTable_clicked(bool)
 void MainWindow::on_level1Button_clicked(bool)
 {
     ui->choosingLevel->setVisible(false);
+    ui->centralWidget->setFixedSize(800, 500);
     ui->gameView->setVisible(true);
 }
 
 void MainWindow::on_level2Button_clicked(bool)
 {
     ui->choosingLevel->setVisible(false);
+    ui->centralWidget->setFixedSize(800, 500);
     ui->gameView->setVisible(true);
 }
 
@@ -59,6 +61,7 @@ void MainWindow::on_newButton_clicked(bool)
 void MainWindow::on_exitGameButton_clicked(bool)
 {
     ui->gameView->setVisible(false);
+    ui->centralWidget->setFixedSize(620, 450);
     ui->choosingLevel->setVisible(true);
 }
 

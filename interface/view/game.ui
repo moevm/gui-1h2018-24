@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>620</width>
-    <height>450</height>
+    <width>800</width>
+    <height>500</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,17 +17,17 @@
    <property name="geometry">
     <rect>
      <x>19</x>
-     <y>29</y>
-     <width>471</width>
-     <height>381</height>
+     <y>19</y>
+     <width>601</width>
+     <height>471</height>
     </rect>
    </property>
   </widget>
   <widget class="QPushButton" name="newButton">
    <property name="geometry">
     <rect>
-     <x>500</x>
-     <y>30</y>
+     <x>670</x>
+     <y>60</y>
      <width>89</width>
      <height>25</height>
     </rect>
@@ -39,8 +39,8 @@
   <widget class="QPushButton" name="exitGameButton">
    <property name="geometry">
     <rect>
-     <x>500</x>
-     <y>70</y>
+     <x>670</x>
+     <y>100</y>
      <width>89</width>
      <height>25</height>
     </rect>
@@ -54,7 +54,7 @@
   <customwidget>
    <class>GameField</class>
    <extends>QWidget</extends>
-   <header>gamefield.h</header>
+   <header>game/gamefield.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

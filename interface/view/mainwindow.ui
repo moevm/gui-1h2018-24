@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>620</width>
-    <height>450</height>
+    <width>820</width>
+    <height>520</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,30 +17,30 @@
    <widget class="MainMenu" name="mainMenu" native="true">
     <property name="geometry">
      <rect>
-      <x>19</x>
-      <y>29</y>
-      <width>581</width>
-      <height>391</height>
+      <x>9</x>
+      <y>9</y>
+      <width>800</width>
+      <height>500</height>
      </rect>
     </property>
    </widget>
    <widget class="RecordsTable" name="recordsTable" native="true">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>30</y>
-      <width>581</width>
-      <height>391</height>
+      <x>10</x>
+      <y>10</y>
+      <width>800</width>
+      <height>500</height>
      </rect>
     </property>
    </widget>
    <widget class="ChoosingLevel" name="choosingLevel" native="true">
     <property name="geometry">
      <rect>
-      <x>19</x>
-      <y>30</y>
-      <width>581</width>
-      <height>391</height>
+      <x>9</x>
+      <y>10</y>
+      <width>800</width>
+      <height>500</height>
      </rect>
     </property>
     <property name="contextMenuPolicy">
@@ -50,10 +50,10 @@
    <widget class="Game" name="gameView" native="true">
     <property name="geometry">
      <rect>
-      <x>19</x>
-      <y>29</y>
-      <width>581</width>
-      <height>371</height>
+      <x>9</x>
+      <y>9</y>
+      <width>800</width>
+      <height>500</height>
      </rect>
     </property>
    </widget>
@@ -68,25 +68,25 @@
   <customwidget>
    <class>ChoosingLevel</class>
    <extends>QWidget</extends>
-   <header>choosinglevel.h</header>
+   <header>interface/view/choosinglevel.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>MainMenu</class>
    <extends>QWidget</extends>
-   <header>mainmenu.h</header>
+   <header>interface/view/mainmenu.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>RecordsTable</class>
    <extends>QWidget</extends>
-   <header>recordstable.h</header>
+   <header>interface/view/recordstable.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>Game</class>
    <extends>QWidget</extends>
-   <header>game.h</header>
+   <header>interface/view/game.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
