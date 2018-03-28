@@ -14,7 +14,6 @@ class ChoosingLevel : public QWidget
 public:
     explicit ChoosingLevel(QWidget *parent = 0);
     ~ChoosingLevel();
-
 private:
     Ui::ChoosingLevel *ui;
 };

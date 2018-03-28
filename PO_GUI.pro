@@ -25,24 +25,36 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-    interface/view/recordstable.cpp \
-    interface/view/choosinglevel.cpp \
-    interface/view/game.cpp \
-    interface/view/mainwindow.cpp \
-    interface/view/mainmenu.cpp \
+    interface/recordstable.cpp \
+    interface/choosinglevel.cpp \
+    interface/game.cpp \
+    interface/mainwindow.cpp \
+    interface/mainmenu.cpp \
     game/gamefield.cpp \
+    game/ball.cpp \
+    game/board.cpp \
+    game/brick.cpp \
 
 HEADERS += \
-    interface/view/recordstable.h \
-    interface/view/choosinglevel.h \
-    interface/view/game.h \
-    interface/view/mainwindow.h \
-    interface/view/mainmenu.h \
+    interface/recordstable.h \
+    interface/choosinglevel.h \
+    interface/game.h \
+    interface/mainwindow.h \
+    interface/mainmenu.h \
     game/gamefield.h \
+    game/ball.h \
+    game/board.h \
+    game/brick.h \
+    game/constants.h
 
 FORMS += \
-    interface/view/recordstable.ui \
-    interface/view/choosinglevel.ui \
-    interface/view/game.ui \
-    interface/view/mainwindow.ui \
-    interface/view/mainmenu.ui
+    interface/recordstable.ui \
+    interface/choosinglevel.ui \
+    interface/game.ui \
+    interface/mainwindow.ui \
+    interface/mainmenu.ui
+
+DISTFILES += \
+    images/ball.png \
+    images/board.png \
+    images/brick.png

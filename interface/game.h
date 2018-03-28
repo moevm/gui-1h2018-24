@@ -15,8 +15,16 @@ public:
     explicit Game(QWidget *parent = 0);
     ~Game();
 
+//    void keyPressEvent(QKeyEvent *);
+//    void keyReleaseEvent(QKeyEvent *);
+    void showEvent(QShowEvent *);
+
 private:
     Ui::Game *ui;
+
+private slots:
+    void on_newButton_clicked(bool);
+    void on_exitGameButton_clicked(bool);
 };
 
 #endif // GAME_H

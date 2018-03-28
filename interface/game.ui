@@ -14,6 +14,9 @@
    <string>Form</string>
   </property>
   <widget class="GameField" name="gameField" native="true">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>19</x>
@@ -54,7 +57,7 @@
   <customwidget>
    <class>GameField</class>
    <extends>QWidget</extends>
-   <header>game/gamefield.h</header>
+   <header>game/view/gamefield.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

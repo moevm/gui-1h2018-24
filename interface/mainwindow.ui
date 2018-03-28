@@ -68,25 +68,25 @@
   <customwidget>
    <class>ChoosingLevel</class>
    <extends>QWidget</extends>
-   <header>interface/view/choosinglevel.h</header>
+   <header>interface/choosinglevel.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>MainMenu</class>
    <extends>QWidget</extends>
-   <header>interface/view/mainmenu.h</header>
+   <header>interface/mainmenu.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>RecordsTable</class>
    <extends>QWidget</extends>
-   <header>interface/view/recordstable.h</header>
+   <header>interface/recordstable.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>Game</class>
    <extends>QWidget</extends>
-   <header>interface/view/game.h</header>
+   <header>interface/game.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
