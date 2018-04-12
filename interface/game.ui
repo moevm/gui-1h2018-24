@@ -52,12 +52,74 @@
     <string>Exit</string>
    </property>
   </widget>
+  <widget class="QLabel" name="lives_lavel">
+   <property name="geometry">
+    <rect>
+     <x>660</x>
+     <y>180</y>
+     <width>51</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Lives:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="record_label">
+   <property name="geometry">
+    <rect>
+     <x>640</x>
+     <y>240</y>
+     <width>81</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Record:</string>
+   </property>
+  </widget>
+  <widget class="QLCDNumber" name="record">
+   <property name="geometry">
+    <rect>
+     <x>720</x>
+     <y>242</y>
+     <width>64</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::NoFrame</enum>
+   </property>
+  </widget>
+  <widget class="QLCDNumber" name="lives">
+   <property name="geometry">
+    <rect>
+     <x>720</x>
+     <y>182</y>
+     <width>64</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::NoFrame</enum>
+   </property>
+  </widget>
  </widget>
  <customwidgets>
   <customwidget>
    <class>GameField</class>
    <extends>QWidget</extends>
-   <header>game/view/gamefield.h</header>
+   <header>game/gamefield.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

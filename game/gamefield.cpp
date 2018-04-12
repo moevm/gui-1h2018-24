@@ -1,5 +1,8 @@
 #include "gamefield.h"
 #include <iostream>
+#include <QTimer>
+#include <QStyleOption>
+#include <QLCDNumber>
 
 GameField::GameField(QWidget* parent)
     :QWidget(parent)
@@ -11,6 +14,7 @@ GameField::GameField(QWidget* parent)
     gameStarted = false;
     ball = new Ball();
     board = new Board();
+    state = new State();
 
     int k = 0;
 
@@ -20,12 +24,12 @@ GameField::GameField(QWidget* parent)
         k++;
       }
     }
-    std::cout<<"I am created"<<std::endl;
 }
 
 GameField::~GameField(){
     delete ball;
     delete board;
+    delete state;
 
     for (int i=0; i<N_OF_BRICKS; i++) {
       delete bricks[i];
@@ -40,14 +44,27 @@ void GameField::mousePressEvent(QMouseEvent *)
 void GameField::paintEvent(QPaintEvent *e) {
 
     Q_UNUSED(e);
+    QStyleOption opt;
+    opt.init(this);
     QPainter painter(this);
+    style()->drawPrimitive(QStyle::PE_Widget, &opt, &painter, this);
 
     if (gameOver) {
-        finishGame(&painter, "Game lost");
-
+        finishGame(&painter, "Game Lost. Points:" + QString::number(state->getRecord())
+                   + "  Lives:" + QString::number(state->getLives()));
     }
     else if(gameWon) {
-        finishGame(&painter, "Victory");
+        if (level == 1){
+            finishGame(&painter, "Victory! Points:" + QString::number(state->getRecord())
+                       + "  Lives:" + QString::number(state->getLives()));
+            QTimer *temp = new QTimer();
+            connect(temp, SIGNAL(timeout()), this, SLOT(startNextLevel()));
+            temp->start(2000);
+        }
+        else {
+            finishGame(&painter, "Victory! Points:" + QString::number(state->getRecord())
+                       + "  Lives:" + QString::number(state->getLives()));
+        }
     }
     else {
         drawObjects(&painter);
@@ -82,7 +99,6 @@ void GameField::drawObjects(QPainter *painter) {
 void GameField::timerEvent(QTimerEvent *e) {
 
     Q_UNUSED(e);
-
     moveObjects();
     checkCollision();
     repaint();
@@ -143,8 +159,10 @@ void GameField::keyPressEvent(QKeyEvent *e) {
 void GameField::startGame() {
 
     if (!gameStarted) {
+        ball->setSpeed(level);
         ball->resetState();
         board->resetState();
+        state->resetState();
 
         for (int i=0; i<N_OF_BRICKS; i++) {
           bricks[i]->setDestroyed(false);
@@ -177,7 +195,6 @@ void GameField::stopGame() {
 }
 
 void GameField::victory() {
-
     killTimer(timerId);
     gameWon = true;
     gameStarted = false;
@@ -186,7 +203,21 @@ void GameField::victory() {
 void GameField::checkCollision() {
 
     if (ball->getRect().bottom() > BOTTOM_EDGE) {
-        stopGame();
+        if (state->getLives() > 0){
+            ball->resetState();
+            ball->setVisible(false);
+            ball->setVisible(true);
+            ball->setXDir(0);
+            ball->setYDir(0);
+            state->decrementLives();
+            QTimer *temp = new QTimer();
+            connect(temp, SIGNAL(timeout()), this, SLOT(continueGame()));
+            temp->start(2000);
+            return;
+        }
+        else {
+            stopGame();
+        }
     }
 
     for (int i=0, j=0; i<N_OF_BRICKS; i++) {
@@ -265,12 +296,41 @@ void GameField::checkCollision() {
                 }
 
                 bricks[i]->setDestroyed(true);
+                state->incrementRecord();
             }
         }
     }
 }
 
+State *GameField::getState() const
+{
+    return state;
+}
+
 int GameField::getBottomEdge()
 {
     return BOTTOM_EDGE;
+}
+
+void GameField::setLevel(int value)
+{
+    level = value;
+    std::cout<<level;
+}
+
+void GameField::startNextLevel()
+{
+    this->level = 2;
+    int oldState[] = {state->getLives(), state->getRecord()};
+    startGame();
+    state->setLives(oldState[0]);
+    state->setRecord(oldState[1]);
+    delete sender();
+}
+
+void GameField::continueGame()
+{
+    ball->setXDir(rand() % 2 == 0 ? 2 : -2);
+    ball->setYDir(-2);
+    delete sender();
 }

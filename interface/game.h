@@ -25,6 +25,9 @@ private:
 private slots:
     void on_newButton_clicked(bool);
     void on_exitGameButton_clicked(bool);
+    void hideGameField();
+    void lives_display(int);
+    void record_display(int);
 };
 
 #endif // GAME_H

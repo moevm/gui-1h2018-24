@@ -6,16 +6,28 @@
 #include "game/ball.h"
 #include "game/brick.h"
 #include "game/board.h"
+#include "game/state.h"
 
 class GameField : public QWidget
 {
+    Q_OBJECT
+
     friend class Game;
 public:
-    GameField(QWidget* parent = 0);
+    explicit GameField(QWidget* parent = 0);
     ~GameField();
 
     void mousePressEvent(QMouseEvent*);
     static int getBottomEdge();
+    int level;
+
+    void setLevel(int value);
+
+    State *getState() const;
+
+public slots:
+    void startNextLevel();
+    void continueGame();
 
 protected:
     void paintEvent(QPaintEvent *);
@@ -41,6 +53,7 @@ protected:
     Ball *ball;
     Board *board;
     Brick *bricks[N_OF_BRICKS];
+    State *state;
     bool gameOver;
     bool gameWon;
     bool gameStarted;

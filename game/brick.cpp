@@ -2,7 +2,7 @@
 
 Brick::Brick(int x, int y)
 {
-    image.load("/home/vend/GUI_Projects/PO_GUI/images/brick.png");
+    image.load(":/images/brick.png");
     destroyed = false;
     rect = image.rect();
     rect.translate(x, y);

@@ -3,7 +3,7 @@
 Board::Board()
 {
     dx = 0;
-    image.load("/home/vend/GUI_Projects/PO_GUI/images/board.png");
+    image.load(":/images/board.png");
 
     rect = image.rect();
     resetState();

@@ -1,6 +1,6 @@
-#include "interface/view/mainwindow.h"
+#include "interface/mainwindow.h"
 #include <QApplication>
-#include "game/view/gamefield.h"
+#include "game/gamefield.h"
 
 int main(int argc, char *argv[])
 {

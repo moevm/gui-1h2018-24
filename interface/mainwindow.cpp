@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <iostream>
+#include "game/gamefield.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -37,12 +38,15 @@ void MainWindow::on_recordsTable_clicked(bool)
 void MainWindow::on_level1Button_clicked(bool)
 {
     ui->choosingLevel->hide();
+    ui->gameView->findChild<GameField*>("gameField")->setLevel(1);
     ui->gameView->show();
 }
 
 void MainWindow::on_level2Button_clicked(bool)
 {
-
+    ui->choosingLevel->hide();
+    ui->gameView->findChild<GameField*>("gameField")->setLevel(2);
+    ui->gameView->show();
 }
 
 void MainWindow::on_exitChoosingLevelButton_clicked(bool)

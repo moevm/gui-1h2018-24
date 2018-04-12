@@ -34,6 +34,7 @@ SOURCES += \
     game/ball.cpp \
     game/board.cpp \
     game/brick.cpp \
+    game/state.cpp
 
 HEADERS += \
     interface/recordstable.h \
@@ -45,7 +46,8 @@ HEADERS += \
     game/ball.h \
     game/board.h \
     game/brick.h \
-    game/constants.h
+    game/constants.h \
+    game/state.h
 
 FORMS += \
     interface/recordstable.ui \
@@ -54,7 +56,4 @@ FORMS += \
     interface/mainwindow.ui \
     interface/mainmenu.ui
 
-DISTFILES += \
-    images/ball.png \
-    images/board.png \
-    images/brick.png
+RESOURCES += application.qrc

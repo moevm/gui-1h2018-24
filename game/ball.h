@@ -10,6 +10,7 @@ public:
     Ball();
 
     void resetState();
+    void setSpeed(int);
     void autoMove();
     void setXDir(int);
     void setYDir(int);
@@ -17,10 +18,12 @@ public:
     int getYDir();
     QRect getRect();
     QImage & getImage();
+    void setVisible(bool);
 
 private:
     int xdir;
     int ydir;
+    double speed;
     QImage image;
     QRect rect;
     static const int INITIAL_X = 230;
