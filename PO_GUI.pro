@@ -34,7 +34,8 @@ SOURCES += \
     game/ball.cpp \
     game/board.cpp \
     game/brick.cpp \
-    game/state.cpp
+    game/state.cpp \
+    records/record.cpp
 
 HEADERS += \
     interface/recordstable.h \
@@ -47,7 +48,8 @@ HEADERS += \
     game/board.h \
     game/brick.h \
     game/constants.h \
-    game/state.h
+    game/state.h \
+    records/record.h
 
 FORMS += \
     interface/recordstable.ui \

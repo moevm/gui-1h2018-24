@@ -28,6 +28,7 @@ public:
 public slots:
     void startNextLevel();
     void continueGame();
+    void clickExit();
 
 protected:
     void paintEvent(QPaintEvent *);

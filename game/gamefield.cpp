@@ -3,6 +3,8 @@
 #include <QTimer>
 #include <QStyleOption>
 #include <QLCDNumber>
+#include <QPushButton>
+
 
 GameField::GameField(QWidget* parent)
     :QWidget(parent)
@@ -73,15 +75,20 @@ void GameField::paintEvent(QPaintEvent *e) {
 
 void GameField::finishGame(QPainter *painter, QString message) {
 
-    QFont font("Courier", 15, QFont::DemiBold);
-    QFontMetrics fm(font);
-    int textWidth = fm.width(message);
-    painter->setFont(font);
-    int h = height();
-    int w = width();
+//    QFont font("Courier", 15, QFont::DemiBold);
+//    QFontMetrics fm(font);
+//    int textWidth = fm.width(message);
+//    painter->setFont(font);
+//    int h = height();
+//    int w = width();
 
-    painter->translate(QPoint(w/2, h/2));
-    painter->drawText(-textWidth/2, 0, message);
+//    painter->translate(QPoint(w/2, h/2));
+//    painter->drawText(-textWidth/2, 0, message);
+
+//    QTimer *temp = new QTimer();
+//    connect(temp, SIGNAL(timeout()), this, SLOT(clickExit()));
+//    temp->start(2000);
+    clickExit();
 }
 
 void GameField::drawObjects(QPainter *painter) {
@@ -333,4 +340,10 @@ void GameField::continueGame()
     ball->setXDir(rand() % 2 == 0 ? 2 : -2);
     ball->setYDir(-2);
     delete sender();
+}
+
+void GameField::clickExit()
+{
+    this->parentWidget()->findChild<QPushButton*>("exitGameButton")->click();
+    //delete sender();
 }

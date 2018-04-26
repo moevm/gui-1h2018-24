@@ -2,7 +2,13 @@
 #include "ui_game.h"
 #include "interface/choosinglevel.h"
 #include <iostream>
+#include <records/record.h>
+#include <interface/recordstable.h>
 #include <QTimer>
+#include <QInputDialog>
+#include <QFile>
+#include <QTextStream>
+#include <QDir>
 
 Game::Game(QWidget *parent) :
     QWidget(parent),
@@ -40,24 +46,34 @@ void Game::on_newButton_clicked(bool)
 
 void Game::on_exitGameButton_clicked(bool)
 {
-    if (ui->gameField->gameOver || ui->gameField->gameWon){
-        this->hide();
-        parentWidget()->findChild<ChoosingLevel*>("choosingLevel")->show();
-    }
-    else {
+    if (!ui->gameField->gameOver && !ui->gameField->gameWon){
         ui->gameField->stopGame();
-        ui->gameField->repaint();
-        QTimer* temp = new QTimer();
-        connect(temp, SIGNAL(timeout()), this, SLOT(hideGameField()));
-        temp->start(2000);
+        //ui->gameField->repaint();
     }
+
+    QInputDialog *dialog = new QInputDialog();
+    connect(dialog, SIGNAL(accepted()), this, SLOT(hideGameField()));
+    QString name = dialog->getText(this, "Saving record", "Enter your name:");
+//    dialog->setOkButtonText("Save");
+//    dialog->setLabelText("Enter your name:");
+    QString record = QString::number(ui->gameField->getState()->getRecord());
+    QFile records(QDir::currentPath() + "/records.txt");
+    if (name != ""){
+        if(records.open(QIODevice::Append | QIODevice::Text)) {
+            QTextStream writeStream(&records);
+            writeStream << name + " ";
+            writeStream << record + "\n";
+            records.close();
+        }
+        parentWidget()->findChild<RecordsTable*>("recordsTable")->append(Record(name, record.toInt()));
+    }
+    dialog->accept();
 }
 
 void Game::hideGameField()
 {
     this->hide();
     parentWidget()->findChild<ChoosingLevel*>("choosingLevel")->show();
-    delete sender();
 }
 
 void Game::lives_display(int lives)
