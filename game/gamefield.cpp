@@ -4,6 +4,7 @@
 #include <QStyleOption>
 #include <QLCDNumber>
 #include <QPushButton>
+#include <interface/game.h>
 
 
 GameField::GameField(QWidget* parent)
@@ -75,20 +76,23 @@ void GameField::paintEvent(QPaintEvent *e) {
 
 void GameField::finishGame(QPainter *painter, QString message) {
 
-//    QFont font("Courier", 15, QFont::DemiBold);
-//    QFontMetrics fm(font);
-//    int textWidth = fm.width(message);
-//    painter->setFont(font);
-//    int h = height();
-//    int w = width();
 
-//    painter->translate(QPoint(w/2, h/2));
-//    painter->drawText(-textWidth/2, 0, message);
+    QFont font("Courier", 15, QFont::DemiBold);
+    QFontMetrics fm(font);
+    int textWidth = fm.width(message);
+    painter->setFont(font);
+    int h = height();
+    int w = width();
+
+    painter->translate(QPoint(w/2, h/2));
+    painter->drawText(-textWidth/2, 0, message);
 
 //    QTimer *temp = new QTimer();
 //    connect(temp, SIGNAL(timeout()), this, SLOT(clickExit()));
+//    connect(temp, SIGNAL(timeout()), temp, SLOT(stop()));
 //    temp->start(2000);
-    clickExit();
+    if ((level == 2) || (!gameWon)) clickExit();
+
 }
 
 void GameField::drawObjects(QPainter *painter) {
@@ -123,11 +127,13 @@ void GameField::keyReleaseEvent(QKeyEvent *e) {
 
     switch (e->key()) {
         case Qt::Key_A:
+        case Qt::Key_Left:
             dx = 0;
             board->setDx(dx);
             break;
 
         case Qt::Key_D:
+        case Qt::Key_Right:
             dx = 0;
             board->setDx(dx);
             break;
@@ -141,6 +147,7 @@ void GameField::keyPressEvent(QKeyEvent *e) {
 
     switch (e->key()) {
     case Qt::Key_A:
+    case Qt::Key_Left:
 
         dx = -2;
         board->setDx(dx);
@@ -148,6 +155,7 @@ void GameField::keyPressEvent(QKeyEvent *e) {
         break;
 
     case Qt::Key_D:
+    case Qt::Key_Right:
 
         dx = 2;
         board->setDx(dx);
@@ -344,6 +352,6 @@ void GameField::continueGame()
 
 void GameField::clickExit()
 {
-    this->parentWidget()->findChild<QPushButton*>("exitGameButton")->click();
-    //delete sender();
+    qobject_cast<Game*>(this->parentWidget())->showFinishDialog();
+    delete sender();
 }

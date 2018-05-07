@@ -9,6 +9,8 @@
 #include <QFile>
 #include <QTextStream>
 #include <QDir>
+#include <QRegularExpression>
+
 
 Game::Game(QWidget *parent) :
     QWidget(parent),
@@ -35,6 +37,55 @@ void Game::showEvent(QShowEvent *)
     ui->gameField->startGame();
 }
 
+void Game::showFinishDialog()
+{
+    QInputDialog *dialog = new QInputDialog();
+    connect(dialog, SIGNAL(accepted()), this, SLOT(hideGameField()));
+    QString name = dialog->getText(this, "Saving record", "Enter your name:");
+    QString record = QString::number(ui->gameField->getState()->getRecord());
+    QFile records(QDir::currentPath() + "/records.txt");
+    bool replaceFlag = false;
+    bool hasName = false;
+
+    if (name != ""){
+        QStringList strList;
+        QFile records(QDir::currentPath() + "/records.txt");
+        if(records.open(QIODevice::ReadOnly)) {
+            while (!records.atEnd()){
+                strList << records.readLine();
+                QString last = strList[strList.count() - 1];
+                if (last.contains(QRegularExpression("\\b" + name + "\\b\\s\\d\\d?"))){
+                    hasName = true;
+                    if (last.split(name + " ")[1].toInt() < record.toInt()){
+                        strList[strList.count() - 1].replace(QRegularExpression("\\b" + name + "\\b\\s\\d\\d?"),
+                                                             name + " " + record);
+                        replaceFlag = true;
+                    }
+                    else {
+                        records.close();
+                        dialog->accept();
+                        return;
+                    }
+                }
+            }
+            records.close();
+        }
+        if (records.open(QIODevice::WriteOnly)) {
+            QTextStream stream(&records);
+            foreach (QString s, strList) {
+                stream << s;
+            }
+            if (!replaceFlag && !hasName){
+                stream << name + " " + record + "\n";
+                parentWidget()->findChild<RecordsTable*>("recordsTable")->append(Record(name, record.toInt()));
+            }
+            records.close();
+        }
+    }
+    if (replaceFlag) parentWidget()->findChild<RecordsTable*>("recordsTable")->reload();
+    dialog->accept();
+}
+
 void Game::on_newButton_clicked(bool)
 {
     if(!ui->gameField->gameOver && !ui->gameField->gameWon){
@@ -50,24 +101,8 @@ void Game::on_exitGameButton_clicked(bool)
         ui->gameField->stopGame();
         //ui->gameField->repaint();
     }
+    showFinishDialog();
 
-    QInputDialog *dialog = new QInputDialog();
-    connect(dialog, SIGNAL(accepted()), this, SLOT(hideGameField()));
-    QString name = dialog->getText(this, "Saving record", "Enter your name:");
-//    dialog->setOkButtonText("Save");
-//    dialog->setLabelText("Enter your name:");
-    QString record = QString::number(ui->gameField->getState()->getRecord());
-    QFile records(QDir::currentPath() + "/records.txt");
-    if (name != ""){
-        if(records.open(QIODevice::Append | QIODevice::Text)) {
-            QTextStream writeStream(&records);
-            writeStream << name + " ";
-            writeStream << record + "\n";
-            records.close();
-        }
-        parentWidget()->findChild<RecordsTable*>("recordsTable")->append(Record(name, record.toInt()));
-    }
-    dialog->accept();
 }
 
 void Game::hideGameField()

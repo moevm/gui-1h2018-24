@@ -18,6 +18,7 @@ public:
 //    void keyPressEvent(QKeyEvent *);
 //    void keyReleaseEvent(QKeyEvent *);
     void showEvent(QShowEvent *);
+    void showFinishDialog();
 
 private:
     Ui::Game *ui;

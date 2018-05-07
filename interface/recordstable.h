@@ -17,6 +17,7 @@ class RecordsTable : public QWidget
 public:
     explicit RecordsTable(QWidget *parent = 0);
     void append(Record record);
+    void reload();
     ~RecordsTable();
 
 private:
