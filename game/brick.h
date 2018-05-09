@@ -7,7 +7,7 @@
 class Brick
 {
 public:
-    Brick(int, int);
+    Brick(int, int, int);
     bool isDestroyed();
     void setDestroyed(bool);
     QRect getRect();

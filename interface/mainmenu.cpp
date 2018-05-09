@@ -6,6 +6,7 @@ MainMenu::MainMenu(QWidget *parent) :
     ui(new Ui::MainMenu)
 {
     ui->setupUi(this);
+    ui->logo->setPixmap(QPixmap(":/images/logo.png"));
 }
 
 MainMenu::~MainMenu()

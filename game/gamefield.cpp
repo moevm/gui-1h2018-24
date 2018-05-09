@@ -23,7 +23,7 @@ GameField::GameField(QWidget* parent)
 
     for (int i=0; i<5; i++) {
       for (int j=0; j<7; j++) {
-        bricks[k] = new Brick(j*72+45, i*24+30);
+        bricks[k] = new Brick(j*72+45, i*24+30, i);
         k++;
       }
     }

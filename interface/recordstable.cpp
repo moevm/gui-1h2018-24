@@ -18,8 +18,8 @@ void RecordsTable::append(Record record)
     std::sort(listOfRecords.begin(), listOfRecords.end());
     ui->table->clear();
     ui->table->setRowCount(0);
-    ui->table->horizontalHeaderItem(0)->setText("Name");
-    ui->table->horizontalHeaderItem(1)->setText("Record");
+    //ui->table->horizontalHeaderItem(0)->setText(QString("Name"));
+    //ui->table->horizontalHeaderItem(1)->setText(QString("Record"));
 
     for (auto i = 0; i < listOfRecords.size(); ++i){
         ui->table->insertRow(i);
@@ -32,8 +32,8 @@ void RecordsTable::reload()
 {
     ui->table->clear();
     ui->table->setRowCount( 0);
-    ui->table->horizontalHeaderItem(0)->setText("Name");
-    ui->table->horizontalHeaderItem(1)->setText("Record");
+    //ui->table->horizontalHeaderItem(0)->setText(QString("Name"));
+    //ui->table->horizontalHeaderItem(1)->setText(QString("Record"));
     this->listOfRecords.clear();
 
     QFile records(QDir::currentPath() + "/records.txt");

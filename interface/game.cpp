@@ -10,6 +10,7 @@
 #include <QTextStream>
 #include <QDir>
 #include <QRegularExpression>
+#include <QPalette>
 
 
 Game::Game(QWidget *parent) :
@@ -20,6 +21,7 @@ Game::Game(QWidget *parent) :
     ui->gameField->setStyleSheet("border: 3px solid black");
     ui->gameField->resize(600,450);
     ui->gameField->setWindowTitle("BreakOut");
+    //ui->gameField->setStyleSheet("background-color:black;");
     ui->lives->setPalette(Qt::blue);
     ui->record->setPalette(Qt::blue);
     connect(ui->gameField->getState(), SIGNAL(livesChanged(int)), ui->lives, SLOT(display(int)));
@@ -41,9 +43,10 @@ void Game::showFinishDialog()
 {
     QInputDialog *dialog = new QInputDialog();
     connect(dialog, SIGNAL(accepted()), this, SLOT(hideGameField()));
+    dialog->setStyleSheet("background-color:white;");
+
     QString name = dialog->getText(this, "Saving record", "Enter your name:");
     QString record = QString::number(ui->gameField->getState()->getRecord());
-    QFile records(QDir::currentPath() + "/records.txt");
     bool replaceFlag = false;
     bool hasName = false;
 

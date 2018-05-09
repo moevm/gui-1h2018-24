@@ -2,12 +2,19 @@
 #include "ui_mainwindow.h"
 #include <iostream>
 #include "game/gamefield.h"
+#include <QDesktopWidget>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    QDesktopWidget desktop;
+    QRect rect = desktop.availableGeometry(desktop.primaryScreen());
+    QPoint center = rect.center();
+    center.setX(center.x() - (this->width()/2));
+    center.setY(center.y() - (this->height()/2));
+    move(center);
     ui->choosingLevel->hide();
     ui->recordsTable->hide();
     ui->gameView->hide();

@@ -2,6 +2,11 @@
     <qresource prefix="/">
         <file>images/ball.png</file>
         <file>images/board.png</file>
-        <file>images/brick.png</file>
+        <file>images/logo.png</file>
+        <file>images/brick_blue.png</file>
+        <file>images/brick_green.png</file>
+        <file>images/brick_red.png</file>
+        <file>images/brick_violet.png</file>
+        <file>images/brick_yellow.png</file>
     </qresource>
 </RCC>
